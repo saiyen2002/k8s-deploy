@@ -6,7 +6,7 @@ for team workshop about deployments
 we need to generate a kubeconfig that will help us connect to the cluster
 
 ```
-❯ aws eks update-kubeconfig --region eu-west-1 --name ped-offiste
+❯ aws eks update-kubeconfig --region eu-west-1 --name ped-offsite
 
 ❯ kubectl get svc
 NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
@@ -23,7 +23,8 @@ create our own namespace by editing the namespace.yaml file and entering our nam
 by default, all commands go to default namespace, so lets change our that to the namespace we created
 ```
 ❯ kubectl get namespace
-kubectl config set-context --current --namespace=athiq
+namespace/athiq created
+❯ kubectl config set-context --current --namespace=athiq
 ```
 
 ## creatin pod 
