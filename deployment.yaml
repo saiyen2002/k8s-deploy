@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: <whatever you want to call your deployment>
   labels:
-    app: nginx
+    <any key>: <any value>
 spec:
-  replicas: <insert-pod-replica-count-here>
+  replicas: <however many number of replica of pods you want>
   selector:
     matchLabels:
       app: nginx
