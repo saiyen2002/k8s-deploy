@@ -1,9 +1,11 @@
+
+
 # k8s-deploy
 for team workshop about deployments
 
-<span style="color:green;font-weight:700;font-size:20px"> 
-Connection to the eks cluster
-</span>
+
+## Connection to the eks cluster
+
 
 
 we need to generate a kubeconfig that will help us connect to the cluster
@@ -18,9 +20,9 @@ NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   172.20.0.1   <none>        443/TCP   27h
 
 ```
-<span style="color:green;font-weight:700;font-size:20px"> 
-Creating the namesapce 
-</span>
+
+## Creating the namesapce 
+
 
 
 create our own namespace by editing the namespace.yaml file and entering whatever we want.
@@ -36,9 +38,9 @@ namespace/athiq created
 ❯ kubectl config set-context --current --namespace=athiq
 ```
 
-<span style="color:green;font-weight:700;font-size:20px"> 
-Creating the pod
-</span>
+
+## Creating the pod
+
 
 We will create the pod running nginx container
 
@@ -53,9 +55,9 @@ NAME    READY   STATUS    RESTARTS   AGE
 nginx   1/1     Running   0          56s
 
 ```
-<span style="color:green;font-weight:700;font-size:20px"> 
-Common pod commands
-</span>
+
+## Common pod commands
+
 
 
 describe the pod that is deployed
