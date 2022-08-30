@@ -1,9 +1,14 @@
 # k8s-deploy
 for team workshop about deployments
 
-## Connection to the eks cluster
+<span style="color:green;font-weight:700;font-size:20px"> 
+Connection to the eks cluster
+</span>
+
 
 we need to generate a kubeconfig that will help us connect to the cluster
+<br > we need to have access to the API access to elliptic-platform AWS account <br >
+ideally this would be via AWS SSO, but we can make static API keys work
 
 ```
 ❯ aws eks update-kubeconfig --region eu-west-1 --name ped-offsite
@@ -13,9 +18,13 @@ NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   172.20.0.1   <none>        443/TCP   27h
 
 ```
-## creating the namesapce 
+<span style="color:green;font-weight:700;font-size:20px"> 
+Creating the namesapce 
+</span>
 
-create our own namespace by editing the namespace.yaml file and entering our name
+
+create our own namespace by editing the namespace.yaml file and entering whatever we want.
+then we apply as follows
 ```
 ❯ kubectl apply -f namespace.yaml
 ```
@@ -27,12 +36,13 @@ namespace/athiq created
 ❯ kubectl config set-context --current --namespace=athiq
 ```
 
-## creatin pod 
+<span style="color:green;font-weight:700;font-size:20px"> 
+Creating the pod
+</span>
 
 We will create the pod running nginx container
 
 ```
-❯ kubectl apply -f pod.yaml
 ❯ kubectl apply -f pod.yaml && kubectl get pods
 pod/nginx created
 NAME    READY   STATUS              RESTARTS   AGE
@@ -42,6 +52,16 @@ nginx   0/1     ContainerCreating   0          1s
 NAME    READY   STATUS    RESTARTS   AGE
 nginx   1/1     Running   0          56s
 
+```
+<span style="color:green;font-weight:700;font-size:20px"> 
+Common pod commands
+</span>
+
+
+describe the pod that is deployed
+
+```
+kubectl describe pod nginx
 ```
 
 The pod only exists inside the cluster and is not exposed to the outside world. <br >
@@ -55,7 +75,7 @@ Handling connection for 8080
 Handling connection for 8080
 ```
 
-now you can open up a new terminal try to curl
+now you can open up a new terminal try to curl, or on your browser go to 127.0.0.1:8080
 
 ```
 ❯ curl -I localhost:8080
@@ -69,3 +89,17 @@ Connection: keep-alive
 ETag: "62b1d4e1-267"
 Accept-Ranges: bytes
 ```
+
+how to log into the pod shell
+
+```
+kubectl exec -it nginx -- /bin/sh
+```
+
+how to get pod logs 
+
+```
+kubectl logs nginx
+```
+
+
